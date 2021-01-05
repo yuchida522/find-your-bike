@@ -3,3 +3,6 @@ class User(db.Model):
 
 class Bike(db.Model):
     pass
+
+class Post(db.model):
+    pass
