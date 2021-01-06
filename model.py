@@ -4,5 +4,8 @@ class User(db.Model):
 class Bike(db.Model):
     pass
 
-class Post(db.model):
+class Post(db.Model):
+    pass
+
+class Location(db.Model):
     pass
