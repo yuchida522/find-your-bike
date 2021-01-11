@@ -38,19 +38,43 @@ class Accessory(db.Model):
     def __repr__(self):
         return f'<accessory id = {self.accessory_id}> title = {self.title} status id = {self.status_id}'
 
-<<<<<<< HEAD
-# class Bike(db.Model):
-#     pass
 
-# class Post(db.Model):
-#     pass
+class Bicycle(db.Model):
+    
+    __tablename__ = 'bikes'
 
-# class Location(db.Model):
-#     pass
-=======
+    bicycle_id = db.Column(db.Integer,
+                           primary_key = True,
+                           autoincrement=True)
+    status_id = db.Column(db.Integer,
+                          db.ForeignKey('status.status_id'),
+                          nullable=False)
+    listing_id = db.Column(db.Integer,
+                           db.ForeignKey('listings.listing_id'),
+                           nullable=False)
+    user_id = db.Coluimn(db.Integer,
+                         db.ForeignKey('users.user_id'),
+                         nullable=False)
+    height = db.Column(db.Integer, nullable=False)
+    frame_type = db.Column(db.String, nullable=False)
+    brand = db.Column(db.String, nullable=False)
+    model = db.Column(db.String, nullable=False)
+    bicycle_type = db.Column(db.String, nullable=False)
+    condition = db.Column(db.String, nullable=False)
+    price = db.Column(db.Integer, nullable=False) #free or trade will be 0
+    wheel_size = db.Column(db.Integer, nullable=False)
+    handle_bar = db.Column(db.String(10), nullable=False)
+    suspension = db.Column(db.String, nullable=False)
+    description = db.Column(db.Text, nullable=False)
 
-class Bike(db.Model):
-    pass
+    status = db.relationship('Status')
+    listing = db.relationship('Listing')
+    user = db.relationship('User')
+
+    def __repr__(self):
+        return f'<Bicycle bicycle_id={self.bicycle_id}, user_id={self.user_id}>'
+
+
 
 
 class Post(db.Model):
@@ -88,4 +112,3 @@ free = db.Column(db.String(1000), nullable=False)
 
 listings = db.relationship('Listing')
 bicycles = db.relationship('Bicycle')
->>>>>>> 27bdb62... added Status and Photo tables
