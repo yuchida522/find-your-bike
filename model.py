@@ -46,6 +46,13 @@ class Bicycle(db.Model):
     bicycle_id = db.Column(db.Integer,
                            primary_key = True,
                            autoincrement=True)
+    status_id = db.Column(db.Integer,
+                          db.ForeignKey('status.status_id'),
+                          nullable=False)
+    listing_id = db.Column(db.Integer,
+                           db.ForeignKey('listings.listing_id'),
+                           nullable=False)
+
     height = db.Column(db.Integer, nullable=False)
     frame_type = db.Column(db.String, nullable=False)
     brand = db.Column(db.String, nullable=False)
@@ -57,6 +64,8 @@ class Bicycle(db.Model):
     handle_bar = db.Column(db.String(10), nullable=False)
     suspension = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
+
+    
 
 
 
