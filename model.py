@@ -52,7 +52,9 @@ class Bicycle(db.Model):
     listing_id = db.Column(db.Integer,
                            db.ForeignKey('listings.listing_id'),
                            nullable=False)
-
+    user_id = db.Coluimn(db.Integer,
+                         db.ForeignKey('users.user_id'),
+                         nullable=False)
     height = db.Column(db.Integer, nullable=False)
     frame_type = db.Column(db.String, nullable=False)
     brand = db.Column(db.String, nullable=False)
@@ -65,7 +67,12 @@ class Bicycle(db.Model):
     suspension = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
 
-    
+    status = db.relationship('Status')
+    listing = db.relationship('Listing')
+    user = db.relationship('User')
+
+    def __repr__(self):
+        return f'<Bicycle bicycle_id={self.bicycle_id}, user_id={self.user_id}>'
 
 
 
