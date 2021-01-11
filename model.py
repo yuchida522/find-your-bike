@@ -38,6 +38,7 @@ class Accessory(db.Model):
     def __repr__(self):
         return f'<accessory id = {self.accessory_id}> title = {self.title} status id = {self.status_id}'
 
+<<<<<<< HEAD
 # class Bike(db.Model):
 #     pass
 
@@ -46,3 +47,45 @@ class Accessory(db.Model):
 
 # class Location(db.Model):
 #     pass
+=======
+
+class Bike(db.Model):
+    pass
+
+
+class Post(db.Model):
+    pass
+
+
+class Location(db.Model):
+    pass
+
+
+class Photo (db.Model):
+    """Stores photos for all user listings"""
+
+    __tablename__ = "photos"
+
+
+photo_id = db.Column(db.Integer, primary_key=True,
+                     unique=True, autoincrement=True)
+photo_url = db.Column(db.String(1000), nullable=False)
+
+listings = db.relationship('Listing')
+
+
+class Status (db.Model):
+    """Keeps track of whether a bike is for sale, trade, or free"""
+
+    __tablename__ = "status"
+
+
+status_id = db.Column(db.Integer, primary_key=True,
+                      unique=True, autoincrement=True)
+sale = db.Column(db.String(1000), nullable=False)
+trade = db.Column(db.String(1000), nullable=False)
+free = db.Column(db.String(1000), nullable=False)
+
+listings = db.relationship('Listing')
+bicycles = db.relationship('Bicycle')
+>>>>>>> 27bdb62... added Status and Photo tables
