@@ -38,16 +38,6 @@ class Accessory(db.Model):
     def __repr__(self):
         return f'<accessory id = {self.accessory_id}> title = {self.title} status id = {self.status_id}'
 
-<<<<<<< HEAD
-# class Bike(db.Model):
-#     pass
-
-# class Post(db.Model):
-#     pass
-
-# class Location(db.Model):
-#     pass
-=======
 
 class Bike(db.Model):
     pass
@@ -88,4 +78,3 @@ free = db.Column(db.String(1000), nullable=False)
 
 listings = db.relationship('Listing')
 bicycles = db.relationship('Bicycle')
->>>>>>> 27bdb62... added Status and Photo tables
