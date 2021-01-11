@@ -39,8 +39,26 @@ class Accessory(db.Model):
         return f'<accessory id = {self.accessory_id}> title = {self.title} status id = {self.status_id}'
 
 
-class Bike(db.Model):
-    pass
+class Bicycle(db.Model):
+    
+    __tablename__ = 'bikes'
+
+    bicycle_id = db.Column(db.Integer,
+                           primary_key = True,
+                           autoincrement=True)
+    height = db.Column(db.Integer, nullable=False)
+    frame_type = db.Column(db.String, nullable=False)
+    brand = db.Column(db.String, nullable=False)
+    model = db.Column(db.String, nullable=False)
+    bicycle_type = db.Column(db.String, nullable=False)
+    condition = db.Column(db.String, nullable=False)
+    price = db.Column(db.Integer, nullable=False) #free or trade will be 0
+    wheel_size = db.Column(db.Integer, nullable=False)
+    handle_bar = db.Column(db.String(10), nullable=False)
+    suspension = db.Column(db.String, nullable=False)
+    description = db.Column(db.Text, nullable=False)
+
+
 
 
 class Post(db.Model):
