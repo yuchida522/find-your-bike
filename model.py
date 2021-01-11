@@ -84,6 +84,7 @@ class Post(db.Model):
 class Location(db.Model):
     pass
 
+<<<<<<< HEAD
 
 class Photo (db.Model):
     """Stores photos for all user listings"""
@@ -112,3 +113,59 @@ free = db.Column(db.String(1000), nullable=False)
 
 listings = db.relationship('Listing')
 bicycles = db.relationship('Bicycle')
+=======
+class Location(db.Model):
+    """ Location of the user """
+    __tablename__ = 'locations'
+
+    location_id = db.Column(db.Integer,
+                        primary_key = True, 
+                        autoincrement = True)
+    zipcode = db.Column(db.Integer)
+    longitude = db.Column(db.Float)
+    latitude = db.Column(db.Float)
+
+    user_locations = db.relationship("User")
+
+    def __repr__(self):
+        return f'< Location location_id = {self.location_id}|| zipcode = {self.zipcode} || longitude = {self.longitude} || latitude = {self.latitude} >'
+
+class Listing(db.Model):
+    """ Listing created by a user """
+    __tablename__ = 'listings'
+
+    listing_id int = db.Column(db.Integer,
+                        primary_key = True, 
+                        autoincrement = True)
+    created_at = db.Column(db.DateTime)
+    title = db.Column(db.String(100))
+    listing_user_id = db.Column(db.Integer,db.ForeignKey('users.user_id')) 
+    flagged = db.Column(db.Boolean)
+
+    bicycle_listings = db.relationship("Bicycle")
+    photo_listings = db.relationship("Photo")
+    comment_listings = db.relationship("Comment")
+    accessories_listings = db.relationship("Accessories")
+
+    user_listing = db.relationship("User")
+
+    def __repr__(self):
+        return f'< Listing listing_id = {self.listing_id}|| created_at = {self.created_at} || title = {self.title} || listing_user_id = {self.listing_user_id} || flagged = {self.flagged} >' 
+
+class Comment(db.Model):
+    """Comments for a post """
+    __tablename__ = 'comments'
+
+    comment_id int = db.Column(db.Integer,
+                        primary_key = True, 
+                        autoincrement = True)
+    listing_id = db.Column(db.Integer,db.ForeignKey('listings.listing_id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
+    comment_text = db.Column(db.Text)
+
+    comment_listing = db.relationship("Listing")
+    comment_user = db.relationship("User")
+
+    def __repr__(self):
+        return f'< Comment comment_id = {self.comment_id}|| listing_id = {self.listing_id} || user_id = {self.user_id} >'
+>>>>>>> Add Location, listing and Comment model
