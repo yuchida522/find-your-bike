@@ -76,12 +76,8 @@ class Bicycle(db.Model):
     user = db.relationship('User')
 
     def __repr__(self):
-<<<<<<< HEAD
         return f'<Bicycle bicycle_id={self.bicycle_id} || user_id={self.user_id}>'
 
-=======
-        return f'<Bicycle bicycle_id={self.bicycle_id}, user_id={self.user_id}>'
->>>>>>> 2f7f8dc... added foreign keys, updated style of attributes, updated status attributes from string to boolean, deleted test classes
 
 
 class Photo (db.Model):
