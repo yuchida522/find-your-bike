@@ -3,6 +3,7 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+#test comment
 
 class User(db.Model):
     """table representing user"""
