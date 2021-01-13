@@ -78,13 +78,6 @@ class Bicycle(db.Model):
         return f'<Bicycle bicycle_id={self.bicycle_id}, user_id={self.user_id}>'
 
 
-class Post(db.Model):
-    pass
-
-
-class Location(db.Model):
-    pass
-
 
 class Photo (db.Model):
     """Stores photos for all user listings"""
@@ -119,6 +112,8 @@ class Status (db.Model):
         return f'< Status = {self.status_id}>'
 
 
+listings = db.relationship('Listing')
+bicycles = db.relationship('Bicycle')
 class Location(db.Model):
     """ Location of the user """
     __tablename__ = 'locations'
@@ -127,6 +122,7 @@ class Location(db.Model):
                             primary_key=True,
                             autoincrement=True)
     zipcode = db.Column(db.Integer)
+    # location_user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
     longitude = db.Column(db.Float)
     latitude = db.Column(db.Float)
 
@@ -140,9 +136,9 @@ class Listing(db.Model):
     """ Listing created by a user """
     __tablename__ = 'listings'
 
-    listing_id int = db.Column(db.Integer,
-                               primary_key=True,
-                               autoincrement=True)
+    listing_id = db.Column(db.Integer,
+                        primary_key = True, 
+                        autoincrement = True)
     created_at = db.Column(db.DateTime)
     title = db.Column(db.String(100))
     listing_user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
@@ -151,7 +147,7 @@ class Listing(db.Model):
     bicycle_listings = db.relationship("Bicycle")
     photo_listings = db.relationship("Photo")
     comment_listings = db.relationship("Comment")
-    accessories_listings = db.relationship("Accessories")
+    accessories_listings = db.relationship("Accessory")
 
     user_listing = db.relationship("User")
 
@@ -163,11 +159,11 @@ class Comment(db.Model):
     """Comments for a post """
     __tablename__ = 'comments'
 
-    comment_id int = db.Column(db.Integer,
-                               primary_key=True,
-                               autoincrement=True)
-    listing_id = db.Column(db.Integer, db.ForeignKey('listings.listing_id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    comment_id = db.Column(db.Integer,
+                        primary_key = True, 
+                        autoincrement = True)
+    listing_id = db.Column(db.Integer,db.ForeignKey('listings.listing_id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
     comment_text = db.Column(db.Text)
 
     comment_listing = db.relationship("Listing")
