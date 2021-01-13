@@ -76,8 +76,12 @@ class Bicycle(db.Model):
     user = db.relationship('User')
 
     def __repr__(self):
+<<<<<<< HEAD
         return f'<Bicycle bicycle_id={self.bicycle_id} || user_id={self.user_id}>'
 
+=======
+        return f'<Bicycle bicycle_id={self.bicycle_id}, user_id={self.user_id}>'
+>>>>>>> 2f7f8dc... added foreign keys, updated style of attributes, updated status attributes from string to boolean, deleted test classes
 
 
 class Photo (db.Model):
@@ -85,14 +89,18 @@ class Photo (db.Model):
 
     __tablename__ = "photos"
 
-    photo_id = db.Column(db.Integer, primary_key=True,
-                         unique=True, autoincrement=True)
+    photo_id = db.Column(db.Integer,
+                         primary_key=True,
+                         unique=True,
+                         autoincrement=True)
     photo_url = db.Column(db.String(1000), nullable=False)
+    photo_listing_id = db.Column(db.Integer,
+                                 db.ForeignKey('listings.listing_id'))
 
-    listings = db.relationship('Listing')
+    photo_listings = db.relationship('Listing')
 
     def __repr__(self):
-        return f'< photo_id = {self.photo_id}, photo_url = {self.photo_url} >'
+        return f'< photo_id = {self.photo_id} || photo_url = {self.photo_url} >'
 
 
 class Status (db.Model):
@@ -100,17 +108,23 @@ class Status (db.Model):
 
     __tablename__ = "status"
 
-    status_id = db.Column(db.Integer, primary_key=True,
-                          unique=True, autoincrement=True)
+    status_id = db.Column(db.Integer,
+                          primary_key=True,
+                          unique=True,
+                          autoincrement=True)
     sale = db.Column(db.String(1000), nullable=False)
     trade = db.Column(db.String(1000), nullable=False)
     free = db.Column(db.String(1000), nullable=False)
+    status_listing_id = db.Column(db.Integer,
+                                  db.ForeignKey('listings.listing_id'))
+    status_bicycle_id = db.Column(db.Integer,
+                                  db.ForeignKey('bicycles.bicycle_id'))
 
-    listings = db.relationship('Listing')
-    bicycles = db.relationship('Bicycle')
+    status_listings = db.relationship('Listing')
+    status_bicycles = db.relationship('Bicycle')
 
     def __repr__(self):
-        return f'< Status = {self.status_id}>'
+        return f'< Status = {self.status_id} || sale = {self.sale} || trade = {self.trade} free = {self.free} >'
 
 
 listings = db.relationship('Listing')
