@@ -31,11 +31,12 @@ class Accessory(db.Model):
     title = db.Column(db.String)
     description = db.Column(db.String)
     condition = db.Column(db.String)
+    price = db.Column(db.Integer)
     status_id = db.Column(db.Integer, db.ForeignKey('status.status_id'))
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.listings_id'))
 
-    status = db.relationship('Status')
-    listings = db.relationship('listing')
+    accessory_status = db.relationship('Status')
+    accessory_listings = db.relationship('listing')
 
     def __repr__(self):
         return f'<accessory id = {self.accessory_id}> title = {self.title} status id = {self.status_id}'
