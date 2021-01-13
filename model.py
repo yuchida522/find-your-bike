@@ -43,6 +43,7 @@ class Accessory(db.Model):
 
 
 class Bicycle(db.Model):
+    """table representing a bike"""
 
     __tablename__ = 'bikes'
 
@@ -55,7 +56,7 @@ class Bicycle(db.Model):
     listing_id = db.Column(db.Integer,
                            db.ForeignKey('listings.listing_id'),
                            nullable=False)
-    user_id = db.Coluimn(db.Integer,
+    user_id = db.Column(db.Integer,
                          db.ForeignKey('users.user_id'),
                          nullable=False)
     height = db.Column(db.Integer, nullable=False)
@@ -66,7 +67,7 @@ class Bicycle(db.Model):
     condition = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)  # free or trade will be 0
     wheel_size = db.Column(db.Integer, nullable=False)
-    handle_bar = db.Column(db.String(10), nullable=False)
+    handle_bar = db.Column(db.String(20), nullable=False)
     suspension = db.Column(db.String, nullable=False)
     description = db.Column(db.Text, nullable=False)
 
@@ -75,7 +76,7 @@ class Bicycle(db.Model):
     user = db.relationship('User')
 
     def __repr__(self):
-        return f'<Bicycle bicycle_id={self.bicycle_id}, user_id={self.user_id}>'
+        return f'<Bicycle bicycle_id={self.bicycle_id} || user_id={self.user_id}>'
 
 
 
