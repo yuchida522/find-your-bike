@@ -112,9 +112,9 @@ class Status (db.Model):
                           primary_key=True,
                           unique=True,
                           autoincrement=True)
-    sale = db.Column(db.String(1000), nullable=False)
-    trade = db.Column(db.String(1000), nullable=False)
-    free = db.Column(db.String(1000), nullable=False)
+    sale = db.Column(db.Boolean, nullable=False)
+    trade = db.Column(db.Boolean, nullable=False)
+    free = db.Column(db.Boolean, nullable=False)
     status_listing_id = db.Column(db.Integer,
                                   db.ForeignKey('listings.listing_id'))
     status_bicycle_id = db.Column(db.Integer,
