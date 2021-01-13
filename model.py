@@ -1,3 +1,5 @@
+"""data model for find your bike app."""
+
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -12,11 +14,11 @@ class User(db.Model):
     user_id = db.Column(db.Integer, 
         autoincrement=True, 
         primary_key=True)
-    fname = db.Column(db.String, nullable = False)
-    lname = db.Column(db.String, nullable = False)
-    email = db.Column(db.String, nullabe = False)
-    phone_num = db.Column(db.Integer, nullable = False)
-    created_at = db.Column(db.DateTime, nullable = True)
+    fname = db.Column(db.String, nullable=False)
+    lname = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
+    phone_num = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     user_location = db.relationship('Location')
@@ -177,3 +179,26 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'< Comment comment_id = {self.comment_id}|| listing_id = {self.listing_id} || user_id = {self.user_id} >'
+
+
+#Dont forget to turn on echo (echo = True)
+def connect_to_db(flask_app, db_uri='postgresql:///bike', echo=True):
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    flask_app.config['SQLALCHEMY_ECHO'] = echo
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.app = flask_app
+    db.init_app(flask_app)
+
+
+
+    print('Connected to the db!')
+
+# if __name__ == '__main__':
+#     # from server import app
+
+#     # Call connect_to_db(app, echo=False) if your program output gets
+#     # too annoying; this will tell SQLAlchemy not to print out every
+#     # query it executes.
+
+#     connect_to_db(app)
