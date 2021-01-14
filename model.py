@@ -182,13 +182,13 @@ class Comment(db.Model):
 
 
 #Dont forget to turn on echo (echo = True)
-def connect_to_db(flask_app, db_uri='postgresql:///bike', echo=True):
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    flask_app.config['SQLALCHEMY_ECHO'] = echo
-    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+def connect_to_db(app, db_uri='postgresql:///bike', echo=True):
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    app.config['SQLALCHEMY_ECHO'] = echo
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    db.app = flask_app
-    db.init_app(flask_app)
+    db.app = app
+    db.init_app(app)
 
 
 
