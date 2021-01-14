@@ -1,4 +1,4 @@
-from model import db, User,  Accessory, Bicycle, Photo, Status, Location, Listing, Comment connect_to_db
+from model import db, User,  Accessory, Bicycle, Photo, Status, Location, Listing, Comment, connect_to_db
 from datetime import datetime
 
 def create_user(fname, lname, email, phone_num, created_at, location_id):

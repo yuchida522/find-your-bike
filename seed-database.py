@@ -18,12 +18,12 @@ def open_pipe_file():
 
         return result 
 
-user_file = open_pipe_file("test_data/user.csv")
+user_file = open_pipe_file("seed_data/user.csv")
 for user in user_file:
     fname, lname, email, phone_num, created_at, location_id = user
-    all_user = crud.create_user(fname, lname, email phone_num, created_at, location_id)
+    all_user = crud.create_user(fname, lname, email, phone_num, created_at, location_id)
 
-accessory_file = open_pipe_file("test_data/accessories.csv")
+accessory_file = open_pipe_file("seed_data/accessories.csv")
 for acc in accessory_file:
     title, description, condition, price, status_id, listing_id  = acc
     all_acc = crud.create_accessory(title, description, condition, price, status_id, listing_id)
