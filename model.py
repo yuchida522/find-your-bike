@@ -66,10 +66,7 @@ class Bicycle(db.Model):
     model = db.Column(db.String, nullable=False)
     bicycle_type = db.Column(db.String, nullable=False)
     condition = db.Column(db.String(25), nullable=False)
-    price = db.Column(db.Integer, nullable=False)  # free or trade will be 0
-    wheel_size = db.Column(db.Integer, nullable=False)
-    handle_bar = db.Column(db.String(20), nullable=False)
-    suspension = db.Column(db.String, nullable=False)
+    price = db.Column(db.Float, nullable=False)  # free or trade will be 0
     description = db.Column(db.Text(3000), nullable=False)
 
     bicycle_status = db.relationship('Status')
