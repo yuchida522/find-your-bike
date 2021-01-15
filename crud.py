@@ -39,9 +39,7 @@ def create_comment(listing_id,user_id,comment_text):
 
     return comment
 
-if __name__ == '__main__':
-    from server import app
-    connect_to_db(app)
+
 def create_bike(status_id, listing_id, user_id, height, frame_type, brand, model, bicycle_type, 
                 condition, price, wheel_size, handle_bar, suspension, description):
     """creates a bike and saves into db"""
@@ -77,3 +75,8 @@ def create_location(zipocde, longitude, latitude):
     db.session.commit()
 
     return location
+
+
+if __name__ == '__main__':
+    from server import app
+    connect_to_db(app)
