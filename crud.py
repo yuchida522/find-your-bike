@@ -42,3 +42,38 @@ def create_comment(listing_id,user_id,comment_text):
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
+def create_bike(status_id, listing_id, user_id, height, frame_type, brand, model, bicycle_type, 
+                condition, price, wheel_size, handle_bar, suspension, description):
+    """creates a bike and saves into db"""
+    
+    bicycle = Bicycle(status_id=status_id,
+                      listing_id=listing_id,
+                      user_id=user_id,
+                      height=height,
+                      frame_type=frame_type,
+                      brand=brand,
+                      model=model,
+                      bicycle_type=bicycle_type,
+                      condition=condition,
+                      price=price,
+                      wheel_size=wheel_size,
+                      handle_bar=handle_bar,
+                      suspension=suspension,
+                      description=description)
+
+    db.session.add(bicycle)
+    db.session.commit()
+
+    return bicycle
+
+def create_location(zipocde, longitude, latitude):
+    """creates location and saves into db"""
+
+    location = Location(zipcode=zipcode,
+                        longitude=longitude,
+                        latitude=latitude)
+
+    db.session.add(location)
+    db.session.commit()
+
+    return location
