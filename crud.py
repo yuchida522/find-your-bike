@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from model import db, User,  Accessory, Bicycle, Photo, Status, Location, Listing, Comment, connect_to_db
 from datetime import datetime
 
@@ -80,3 +81,28 @@ def create_location(zipocde, longitude, latitude):
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
+=======
+
+
+def create_status(sale, trade, free, status_listing_id, status_bicycle_id):
+    """Create and return status of bicycle for a listing"""
+
+    status = Status(sale=sale, trade=trade, free=free,
+                    status_listing_id=status_listing_id, status_bicycle_id=status_bicycle_id)
+
+    db.session.add(status)
+    db.session.commit()
+
+    return status
+
+
+def create_photo(photo_url, photo_listing_id):
+    """Create and return listing photos"""
+
+    photos = Photo(photo_url=photo_url, photo_listing_id=photo_listing_id)
+
+    db.session.add(photos)
+    db.session.commit()
+
+    return photos
+>>>>>>> aab79f4... add crud functions for Photo and Status
