@@ -60,7 +60,7 @@ class Bicycle(db.Model):
     status_id = db.Column(db.Integer, db.ForeignKey('status.status_id'))
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.listing_id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    height = db.Column(db.Integer, nullable=False)
+    frame_size = db.Column(db.Integer, nullable=False)
     frame_type = db.Column(db.String, nullable=False)
     brand = db.Column(db.String, nullable=False)
     model = db.Column(db.String, nullable=False)
