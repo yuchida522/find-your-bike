@@ -16,8 +16,8 @@ class User(db.Model):
         primary_key=True)
     fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
     phone_num = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
