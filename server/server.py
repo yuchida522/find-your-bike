@@ -9,8 +9,9 @@ app = Flask(__name__)
 app.secret_key = "online_bike_exchange"
 app.jinja_env.undefined = StrictUndefined
 
-def server():
-    pass
+@app.route('/')
+def homepage():
+    return "Welcome to Online Bike Exchange!"
 
 if __name__ == '__main__':
     connect_to_db(app)
