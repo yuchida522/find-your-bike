@@ -2,7 +2,7 @@
 from flask import Flask, flash, redirect, render_template, request, session
 from jinja2 import StrictUndefined
 """this will be there server file"""
-import crud
+# import crud
 from model import connect_to_db, db
 
 app = Flask(__name__)
