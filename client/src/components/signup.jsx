@@ -1,7 +1,7 @@
 const RegistrationForm = props => {
     // array destructuring -- two vars declared inside of an array-- 
     // react,usestate returns an array with two things in them. We pull them out into 2 diff vars
-    const [state, useState] = React.useState(
+    const [state, makeState] = React.useState(
         {login: false,
         user: {},
         email: "",
@@ -15,3 +15,6 @@ const RegistrationForm = props => {
     // state is the current state of the registration??
     // useState is a function that will update the reigstration statuse??
 }
+
+const registerChange = (e) => {
+    
