@@ -18,3 +18,5 @@ const RegistrationForm = props => {
 
 const registerChange = (e) => {
     
+}
+    
