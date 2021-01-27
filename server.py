@@ -9,10 +9,22 @@ app = Flask(__name__)
 app.secret_key = "online_bike_exchange"
 app.jinja_env.undefined = StrictUndefined
 
+
 @app.route('/')
 def homepage():
-    return "Welcome to Online Bike Exchange!"
+    
+    return render_template('base.html')
+
+
+@app.route('/login')
+def login():
+
+    return render_template('base.html')
+
 
 if __name__ == '__main__':
     connect_to_db(app)
-    app.run(host='0.0.0.0', debug=True, port = 5002)
+    # only this host number works for Yuri, look into why
+    app.run(host='127.0.0.1', debug=True, port = 5002) 
+
+    # app.run(host='0.0.0.0', debug=True, port = 5002)
