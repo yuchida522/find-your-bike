@@ -16,15 +16,23 @@ def homepage():
     return render_template('base.html')
 
 
+@app.route('/about')
+def about():
+
+    return render_template('base.html')
+
+
 @app.route('/login')
 def login():
 
     return render_template('base.html')
 
+
 @app.route('/profile')
 def profile():
 
     return render_template('base.html')
+
 
 if __name__ == '__main__':
     connect_to_db(app)
