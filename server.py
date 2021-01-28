@@ -16,11 +16,6 @@ def homepage():
     return render_template('base.html')
 
 
-@app.route('/navbar')
-def nav():
-    return render_template('base.html')
-
-
 @app.route('/login')
 def login():
 
