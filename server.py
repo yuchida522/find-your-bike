@@ -21,6 +21,10 @@ def login():
 
     return render_template('base.html')
 
+@app.route('/profile')
+def profile():
+
+    return render_template('base.html')
 
 if __name__ == '__main__':
     connect_to_db(app)

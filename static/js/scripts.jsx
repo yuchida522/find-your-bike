@@ -7,5 +7,10 @@ const Redirect = ReactRouterDOM.Redirect;
 const useParams = ReactRouterDOM.useParams;
 const useHistory = ReactRouterDOM.useHistory;
 
-
+const Container = ReactBootstrap.Container;
+const Row = ReactBootstrap.Row;
+const Col = ReactBootstrap.Col;
+const Form = ReactBootstrap.Form;
+const Button = ReactBootstrap.Button;
+const Image = ReactBootstrap.Image;
 
