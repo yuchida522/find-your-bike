@@ -3,11 +3,12 @@
 function App() {
 	return (
 		<Router>
+        <div><NavComponent/></div>
 			<Switch>
-
 				<Route exact path='/login'>
 					<Login />
 				</Route>
+<<<<<<< HEAD
 				<Route exact path='/profile'>
 					<Profile />
 				</Route>
@@ -16,6 +17,8 @@ function App() {
 					<Login />
 				</Route>
 
+=======
+>>>>>>> c2a3a28 (move navbar above Switch)
 			</Switch>
 		</Router>	
 	);
