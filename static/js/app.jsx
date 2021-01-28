@@ -3,6 +3,7 @@
 function App() {
 	return (
 		<Router>
+        <div><NavComponent/></div>
 			<Switch>
 				<Route exact path='/login'>
 					<Login />
@@ -10,6 +11,11 @@ function App() {
 				<Route exact path='/profile'>
 					<Profile />
 				</Route>
+
+                <Route exact path='/navbar'>
+					<Login />
+				</Route>
+
 			</Switch>
 		</Router>	
 	);

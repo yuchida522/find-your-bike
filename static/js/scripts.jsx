@@ -13,4 +13,6 @@ const Col = ReactBootstrap.Col;
 const Form = ReactBootstrap.Form;
 const Button = ReactBootstrap.Button;
 const Image = ReactBootstrap.Image;
+const Navbar = ReactBootstrap.Navbar;
+const Nav = ReactBootstrap.Nav;
 
