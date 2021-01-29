@@ -8,18 +8,25 @@ function App() {
 				<Route exact path='/login'>
 					<Login />
 				</Route>
-				<Route exact path='/profile'>
-					<Profile />
-				</Route>
 
+                <Route exact path='/about'>
+					<About />
+                </Route>
+
+                <Route exact path='/profile'>
+				    <Profile />
+ 				</Route>
                 <Route exact path='/navbar'>
-					<Login />
-				</Route>
+                    <NavComponent />
+                </Route>
 
 			</Switch>
-		</Router>	
-	);
+        </Router>
+    );
 }
 
 
 ReactDOM.render(<App />, document.getElementById('app'))
+
+
+
