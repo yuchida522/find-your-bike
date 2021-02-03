@@ -1,4 +1,10 @@
 const RegistrationForm = (props) => {
+function Singup(){
+    
+}
+
+
+const RegistrationForm = props => {
     // array destructuring -- two vars declared inside of an array-- 
     // react,usestate returns an array with two things in them. We pull them out into 2 diff vars
     const [state, makeState] = React.useState(
@@ -18,5 +24,5 @@ const RegistrationForm = (props) => {
 
 const registerChange = (e) => {
 
-}
     
+}
