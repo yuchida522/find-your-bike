@@ -12,6 +12,7 @@ function NavComponent() {
                 <Nav.Link href="about">About</Nav.Link>
                 <Nav.Link href="login">Login</Nav.Link>
                 <Nav.Link href="logout">Sign Out</Nav.Link>
+                <Nav.Link href="map">Map</Nav.Link>
 			</Nav>
 		</Navbar>
 	)

@@ -20,6 +20,10 @@ function Login() {
 			</Form.Group>
 
 			<Button variant="primary">Log In</Button>
+			
 		</div>
 	)
 }
+
+// ReactDOM.render(<Map />, document.getElementById('map'));
+
