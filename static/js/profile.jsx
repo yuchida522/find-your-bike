@@ -6,18 +6,17 @@ function Profile() {
 		<React.Fragment>
 			<Container>
 				<Row>
-				<h1>Find Your Bike</h1>
-				search
-				<input type="text"></input> <br/>
-				</Row>
-			</Container>
-			<Container>
-				<Row>
 					<Col xs={6} md={4}>
 						<Image src="static/img/IMG-2719.JPG" thumbnail/>
 					</Col>
+					<h1>Yuri Uchida</h1>
 				</Row>
-			</Container>		
+				<Row>
+					Menlo Park, CA
+				</Row>
+
+			</Container>
+
 			
 		</React.Fragment>
 	)
