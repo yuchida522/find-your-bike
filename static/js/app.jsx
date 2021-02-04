@@ -7,21 +7,24 @@ function App() {
 			<Switch>
 				<Route exact path='/login'>
 					<Login />
+					<Map />
 				</Route>
 
                 <Route exact path='/about'>
 					<About />
                 </Route>
 
-                <Route exact path='/profile'>
+                {/* <Route exact path='/profile'>
 				    <Profile />
- 				</Route>
+					<Map />
+ 				</Route> */}
                 <Route exact path='/navbar'>
                     <NavComponent />
                 </Route>
-
+				
 			</Switch>
         </Router>
+	
     );
 }
 
