@@ -14,7 +14,10 @@
   <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
   <script src="/static/js/scripts.jsx" type="text/jsx"></script>
-  
+
+  <!-- Mapbox GL JS scripts -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
 
     <!--Styling-->
 
@@ -49,6 +52,17 @@
   <script src="/static/js/app.jsx" type="text/jsx"></script>
 
 
+  
+
+<!-- mapbox code to be added to the html body -->
+  <div id='map' style='width: 400px; height: 300px;'></div>
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoib25saW5lYmlrZWV4Y2hhbmdlIiwiYSI6ImNrazJ5dWJ2ODBpaWoyb2t6YWZqYXE2cDIifQ.XWg_ezdY5kh-5oigh2n69w';
+  var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11'
+  });
+</script>
 </body>
 
 </html>
