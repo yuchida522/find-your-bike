@@ -2,21 +2,21 @@ from model import db, User,  Accessory, Bicycle, Photo, Status, Location, Listin
 from datetime import datetime
 
 
-def create_user(fname, lname, email, phone_num, created_at, location_id):
+def create_user(fname, lname, email, phone_num, created_at):
     """Create and add user to the db"""
-    users = User(fname=fname, lname=lname, email=email, phone_num=phone_num,
-                 created_at=created_at, location_id=location_id)
+    user = User(fname=fname, lname=lname, email=email, phone_num=phone_num,
+                 created_at=created_at)
 
-    db.session.add(users)
+    db.session.add(user)
     db.session.commit()
 
-    return users
+    return user
 
 
-def create_accessory(title, description, condition, price, status_id, listing_id):
+def create_accessory(title, description, condition, price, status_id, listing_id, user_id):
     """Create and add accessories to the bd based on lisitng and user"""
     accessories = Accessory(title=title, description=description, condition=condition,
-                            price=price, status_id=status_id, listing_id=listing_id)
+                            price=price, status_id = status_id, listing_id = listing_id, user_id = user_id)
 
     db.session.add(accessories)
     db.session.commit()
@@ -24,10 +24,10 @@ def create_accessory(title, description, condition, price, status_id, listing_id
     return accessories
 
 
-def create_listing(created_at, title, listing_user_id, flagged=False):
+def create_listing(created_at, title, listing_user_id,listing_status_id, flagged=False):
     """Create and return a listing """
     listing = Listing(created_at=created_at, title=title,
-                      listing_user_id=listing_user_id, flagged=flagged)
+                      listing_user_id=listing_user_id,listing_status_id = listing_status_id, flagged=flagged)
 
     db.session.add(listing)
     db.session.commit()
@@ -40,29 +40,26 @@ def create_comment(listing_id, user_id, comment_text):
     comment = Comment(listing_id=listing_id, user_id=user_id,
                       comment_text=comment_text)
 
-    db.session.add(listing)
+    db.session.add(comment)
     db.session.commit()
 
     return comment
 
 
-def create_bike(status_id, listing_id, user_id, height, frame_type, brand, model, bicycle_type,
-                condition, price, wheel_size, handle_bar, suspension, description):
+def create_bicycle(status_id, listing_id, user_id, frame_size, frame_type, brand, model, bicycle_type,
+                condition, price, description):
     """creates a bike and saves into db"""
 
     bicycle = Bicycle(status_id=status_id,
                       listing_id=listing_id,
                       user_id=user_id,
-                      height=height,
+                      frame_size=frame_size,
                       frame_type=frame_type,
                       brand=brand,
                       model=model,
                       bicycle_type=bicycle_type,
                       condition=condition,
                       price=price,
-                      wheel_size=wheel_size,
-                      handle_bar=handle_bar,
-                      suspension=suspension,
                       description=description)
 
     db.session.add(bicycle)
@@ -71,12 +68,14 @@ def create_bike(status_id, listing_id, user_id, height, frame_type, brand, model
     return bicycle
 
 
-def create_location(zipocde, longitude, latitude):
+def create_location(name, zipcode, longitude, latitude,user_id):
     """creates location and saves into db"""
 
-    location = Location(zipcode=zipcode,
+    location = Location(name = name,
+                        zipcode=zipcode,
                         longitude=longitude,
-                        latitude=latitude)
+                        latitude=latitude,
+                        user_id = user_id)
 
     db.session.add(location)
     db.session.commit()
@@ -84,14 +83,17 @@ def create_location(zipocde, longitude, latitude):
     return location
 
 
-def create_status(sale, trade, free, status_listing_id, status_bicycle_id):
+# def create_status(sale, trade, free, status_listing_id, status_bicycle_id):
+def create_status(status_name):
     """Create and return status of bicycle for a listing"""
-
-    status = Status(sale=sale, trade=trade, free=free,
-                    status_listing_id=status_listing_id, status_bicycle_id=status_bicycle_id)
-
+    status = Status(status_name = status_name )
     db.session.add(status)
     db.session.commit()
+    # status = Status(sale=sale, trade=trade, free=free,
+    #                 status_listing_id=status_listing_id, status_bicycle_id=status_bicycle_id)
+    
+
+    
 
     return status
 

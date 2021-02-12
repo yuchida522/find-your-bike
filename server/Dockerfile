@@ -1,15 +1,24 @@
-FROM python:3.8-slim-buster
+# set base image (host OS)
+FROM python:3.8
 
+# set the working directory in the container
+WORKDIR /src/Find-Your-Bike
 
-WORKDIR /usr/src/Find-Your-Bike
+# COPY . .
+# copy the dependencies file to the working directory
+COPY requirements.txt .
 
-COPY . .
+# install dependencies
+RUN pip install -r requirements.txt
+# RUN python -m pip install -r requirements.txt
 
-RUN python -m pip install -r requirements.txt
+# copy the content of the local src directory to the working directory -(would be different for others ?)
+COPY src/bike/find-your-bike/ .
 
 EXPOSE 5002
 
-CMD ["python" "server.py"]
+# command to run on container start
+CMD ["python3" "server.py"]
 
 
 # For more information, please refer to https://aka.ms/vscode-docker-python
