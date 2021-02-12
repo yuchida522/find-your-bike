@@ -41,18 +41,18 @@ def profile():
 ############ ALGOLIA ###############
 
 
-client = SearchClient.create(
-    os.environ['ALGOLIA_API_ID'],
-    os.environ['ALGOLIA_API_KEY']
-)
+# client = SearchClient.create(
+#     os.environ['ALGOLIA_API_ID'],
+#     os.environ['ALGOLIA_API_KEY']
+# )
 
-index = client.init_index('testing')
+# index = client.init_index('testing')
 
-# Enid testing:
-index.save_objects([{"objectID": 8, "brand": "test8"}])
+# # Enid testing:
+# index.save_objects([{"objectID": 8, "brand": "test8"}])
 
-# Enid testing:
-# objects = index.search('test')
+# # Enid testing:
+# # objects = index.search('test')
 
 
 if __name__ == '__main__':
