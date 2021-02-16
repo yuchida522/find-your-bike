@@ -37,6 +37,11 @@ def profile():
 
     return render_template('base.html')
 
+@app.route('/create-listing')
+def create_listing():
+
+    return render_template('base.html')
+
 
 ############ ALGOLIA ###############
 

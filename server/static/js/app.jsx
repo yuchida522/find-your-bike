@@ -18,9 +18,13 @@ function App() {
 				    <Profile />
 					{/* <Map /> */}
  				</Route>
+				 <Route exact path='/upload-listing'>
+					<CreateListing />
+                </Route>
                 <Route exact path='/navbar'>
                     <NavComponent />
                 </Route>
+
 				
 			</Switch>
         </Router>
