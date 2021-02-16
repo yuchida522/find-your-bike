@@ -5,7 +5,7 @@ from jinja2 import StrictUndefined
 import os
 import secrets
 
-from algoliasearch.search_client import SearchClient
+# from algoliasearch.search_client import SearchClient
 """this will be there server file"""
 # import crud
 
