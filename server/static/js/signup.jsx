@@ -1,5 +1,5 @@
 const RegistrationForm = (props) => {
-function Singup(){
+function Signup(){
     return (
         <div>
             <h1>Register Now!</h1>
@@ -31,7 +31,7 @@ function Singup(){
         </div>
     ) 
 }
-
+}
 
 // const RegistrationForm = props => {
 //     // array destructuring -- two vars declared inside of an array-- 
@@ -51,10 +51,10 @@ function Singup(){
 //     // useState is a function that will update the reigstration statuse??
 // }
 
-const registerChange = (e) => {
+// const registerChange = (e) => {
 
     
-}
+// }
 // const registerChange = (e) => {
     
 // }

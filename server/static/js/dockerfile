@@ -1,0 +1,22 @@
+# pull current official base image
+FROM node:15.6.0
+
+# set working directory
+WORKDIR /find-your-bike
+# should i add instead /app/template?
+
+# add `/app/templates/.bin` to $PATH
+ENV PATH /find-your-bike/node_modules/.bin:$PATH 
+
+# Install app dependencies , syntax : <src>... <dest>
+# COPY package.json /find-your-bike
+
+RUN npm install
+
+# Add rest of the client code
+COPY . /find-your-bike
+
+#default port of react app
+EXPOSE 3000
+
+CMD npm start

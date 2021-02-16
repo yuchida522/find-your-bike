@@ -51,8 +51,8 @@ def profile():
 # # Enid testing:
 # index.save_objects([{"objectID": 8, "brand": "test8"}])
 
-# Enid testing:
-# objects = index.search('test')
+# # Enid testing:
+# # objects = index.search('test')
 
 
 if __name__ == '__main__':

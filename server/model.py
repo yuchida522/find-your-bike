@@ -17,11 +17,16 @@ class User(db.Model):
     fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
-    phone_num = db.Column(db.Integer, nullable=False)
+    phone_num = db.Column(db.BigInteger)
     created_at = db.Column(db.DateTime)
-    location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
+    # location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     user_location = db.relationship('Location')
+    user_bicycle = db.relationship('Bicycle')
+    user_bicycle = db.relationship('Accessory')
+    user_listing = db.relationship('Listing')
+    user_comment = db.relationship('Comment')
+
 
     def __repr__(self):
         return f'<user_id= {self.user_id} || fname= {self.fname} || email= {self.email}>'
@@ -41,9 +46,11 @@ class Accessory(db.Model):
     price = db.Column(db.Integer, nullable = False)
     status_id = db.Column(db.Integer, db.ForeignKey('status.status_id'))
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.listing_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     accessory_status = db.relationship('Status')
     accessory_listing = db.relationship('Listing')
+    accessory_user = db.relationship('User')
 
     def __repr__(self):
         return f'<accessory id = {self.accessory_id}> || title = {self.title} || status id = {self.status_id}'
@@ -52,7 +59,7 @@ class Accessory(db.Model):
 class Bicycle(db.Model):
     """table representing a bike"""
 
-    __tablename__ = 'bikes'
+    __tablename__ = 'bicycles'
 
     bicycle_id = db.Column(db.Integer,
                            primary_key=True,
@@ -67,7 +74,7 @@ class Bicycle(db.Model):
     bicycle_type = db.Column(db.String, nullable=False)
     condition = db.Column(db.String(25), nullable=False)
     price = db.Column(db.Float, nullable=False)  # free or trade will be 0
-    description = db.Column(db.Text(3000), nullable=False)
+    description = db.Column(db.Text, nullable=False)
 
     bicycle_status = db.relationship('Status')
     bicycle_listing = db.relationship('Listing')
@@ -106,16 +113,19 @@ class Status (db.Model):
                           primary_key=True,
                           unique=True,
                           autoincrement=True)
-    sale = db.Column(db.Boolean, nullable=False)
-    trade = db.Column(db.Boolean, nullable=False)
-    free = db.Column(db.Boolean, nullable=False)
-    status_listing_id = db.Column(db.Integer,
-                                  db.ForeignKey('listings.listing_id'))
-    status_bicycle_id = db.Column(db.Integer,
-                                  db.ForeignKey('bicycles.bicycle_id'))
+    status_name = db.Column(db.String)
+    # sale = db.Column(db.Boolean, nullable=False)
+    # trade = db.Column(db.Boolean, nullable=False)
+    # free = db.Column(db.Boolean, nullable=False)
+    # status_listing_id = db.Column(db.Integer,
+    #                               db.ForeignKey('listings.listing_id'))
+    # status_bicycle_id = db.Column(db.Integer,
+    #                               db.ForeignKey('bicycles.bicycle_id'))
 
     status_listing = db.relationship('Listing')
     status_bicycle = db.relationship('Bicycle')
+    status_accessory = db.relationship('Accessory')
+
 
     def __repr__(self):
         return f'< Status = {self.status_id} || sale = {self.sale} || trade = {self.trade} free = {self.free} >'
@@ -128,9 +138,11 @@ class Location(db.Model):
     location_id = db.Column(db.Integer,
                             primary_key=True,
                             autoincrement=True)
+    name = db.Column(db.String)
     zipcode = db.Column(db.Integer, nullable = False)
     longitude = db.Column(db.Float, nullable = False)
     latitude = db.Column(db.Float, nullable = False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     user_location = db.relationship("User")
 
@@ -148,13 +160,15 @@ class Listing(db.Model):
     created_at = db.Column(db.DateTime, nullable = False)
     title = db.Column(db.String(100), nullable = False)
     listing_user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    flagged = db.Column(db.Boolean, default= False, nullable = False)
+    listing_status_id = db.Column(db.Integer, db.ForeignKey('status.status_id'))
+    flagged = db.Column(db.String, default= 'False')
 
     bicycle_listing = db.relationship("Bicycle")
     photo_listing = db.relationship("Photo")
     comment_listing = db.relationship("Comment")
     accessories_listing = db.relationship("Accessory")
     user_listing = db.relationship("User")
+    status_listing = db.relationship("Status")
 
     def __repr__(self):
         return f'< Listing listing_id = {self.listing_id}|| created_at = {self.created_at} || title = {self.title} || listing_user_id = {self.listing_user_id} || flagged = {self.flagged} >'
@@ -191,11 +205,12 @@ def connect_to_db(app, db_uri='postgresql:///bike', echo=True):
 
     print('Connected to the db!')
 
-# if __name__ == '__main__':
-#     # from server import app
+if __name__ == '__main__':
+    from server import app
 
-#     # Call connect_to_db(app, echo=False) if your program output gets
-#     # too annoying; this will tell SQLAlchemy not to print out every
-#     # query it executes.
+    # Call connect_to_db(app, echo=False) if your program output gets
+    # too annoying; this will tell SQLAlchemy not to print out every
+    # query it executes.
 
-#     connect_to_db(app)
+    connect_to_db(app)
+    db.create_all()
