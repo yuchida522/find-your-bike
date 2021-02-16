@@ -5,7 +5,7 @@ from jinja2 import StrictUndefined
 import os
 import secrets
 
-from algoliasearch.search_client import SearchClient
+# from algoliasearch.search_client import SearchClient
 """this will be there server file"""
 # import crud
 
@@ -41,15 +41,15 @@ def profile():
 ############ ALGOLIA ###############
 
 
-client = SearchClient.create(
-    os.environ['ALGOLIA_API_ID'],
-    os.environ['ALGOLIA_API_KEY']
-)
+# client = SearchClient.create(
+#     os.environ['ALGOLIA_API_ID'],
+#     os.environ['ALGOLIA_API_KEY']
+# )
 
-index = client.init_index('testing')
+# index = client.init_index('testing')
 
-# Enid testing:
-index.save_objects([{"objectID": 8, "brand": "test8"}])
+# # Enid testing:
+# index.save_objects([{"objectID": 8, "brand": "test8"}])
 
 # Enid testing:
 # objects = index.search('test')
