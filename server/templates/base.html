@@ -2,9 +2,20 @@
 <html>
 <head>
 
+
+<!-- CDN for full Algolia theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css" integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
+
+
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+
+    <!-- CDN for Algolia InstantSearch for React -->
+    <script src="https://cdn.jsdelivr.net/npm/react@16.8.4/umd/react.production.min.js" integrity="sha256-ctUamuIgSCQg1wsh8Iw0QbDXScmyXhjJ6lxYUscC3FA=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@16.8.4/umd/react-dom.production.min.js" integrity="sha256-8uWWG/7CB3OS89Cw67+B++t6w0EMGfQE9C6OGps+Wd8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-instantsearch-dom@6.7.0/dist/umd/ReactInstantSearchDOM.min.js" integrity="sha256-wggJgvcPaPOJnfujGmGMq7LzJgc7/EqEtLCW/BPZy7E=" crossorigin="anonymous"></script>
   
   <!-- react dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js" crossorigin></script>
@@ -14,6 +25,9 @@
   <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
   <script src="/static/js/scripts.jsx" type="text/jsx"></script>
+
+  
+
 
   <!-- Mapbox GL JS scripts -->
 <<<<<<< HEAD:templates/base.html
@@ -53,6 +67,7 @@
 
   <!-- jsx files go here -->
 
+  <script src="/static/js/search.jsx" type="text/jsx"></script> 
   <script src="/static/js/profile.jsx" type="text/jsx"></script>   
   <script src="/static/js/about.jsx" type="text/jsx"></script>
   <script src="/static/js/navbar.jsx" type="text/jsx"></script>
