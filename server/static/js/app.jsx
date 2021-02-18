@@ -18,7 +18,7 @@ function App() {
 				    <Profile />
 					{/* <Map /> */}
  				</Route>
-				 <Route exact path='/upload-listing'>
+				 <Route exact path='/create-listing'>
 					<CreateListing />
                 </Route>
                 <Route exact path='/navbar'>

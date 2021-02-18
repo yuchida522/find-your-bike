@@ -12,7 +12,7 @@ function CreateListing () {
 	return (
     <React.Fragment>
 			<h1>Create Listing</h1>
-			<Form>
+			<Form onSubmit={handleSubmitForm}>
 			<Form.Group>
     		<Form.File id="imageUpload" label="Upload Image"
 				 onChange={handleUploadImage} value={uploadImageState}
