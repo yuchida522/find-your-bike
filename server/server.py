@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from jinja2 import StrictUndefined
 import os
 import secrets
+# import cloudinary
 
 # from algoliasearch.search_client import SearchClient
 """this will be there server file"""
