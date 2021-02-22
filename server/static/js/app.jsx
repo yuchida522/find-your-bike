@@ -17,9 +17,13 @@ function App() {
 				    <Profile />
 					{/* <Map /> */}
  				</Route>
+				 <Route exact path='/create-listing'>
+					<CreateListing />
+                </Route>
                 <Route exact path='/navbar'>
                     <NavComponent />
                 </Route>
+
 				
 			</Switch>
         </Router>

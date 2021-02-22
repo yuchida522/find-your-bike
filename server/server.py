@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from jinja2 import StrictUndefined
 import os
 import secrets
+import cloudinary
 
 # from algoliasearch.search_client import SearchClient
 """this will be there server file"""
@@ -13,6 +14,11 @@ app = Flask(__name__)
 app.secret_key = "online_bike_exchange"
 app.jinja_env.undefined = StrictUndefined
 
+cloudinary.config(
+    cloud_name = "CLOUD_NAME",
+    api_key = "CLOUDINARY_KEY",
+    api_secret = "CLOUDINARY_SECRET"
+)
 
 @app.route('/')
 def homepage():
@@ -34,6 +40,11 @@ def login():
 
 @app.route('/profile')
 def profile():
+
+    return render_template('base.html')
+
+@app.route('/create-listing')
+def create_listing():
 
     return render_template('base.html')
 
