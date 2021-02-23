@@ -1,4 +1,6 @@
 "use strict";
+
+// webpack -- compile jsx file into js file
 function App() {
 	return (
 		<Router>
