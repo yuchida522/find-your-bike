@@ -33,7 +33,7 @@ function Login() {
 				</Form.Group>
 
 				<Form.Group controlId="formBasicUsername">
-					<Form.Label>Username</Form.Label>
+					<Form.Label>Add Username</Form.Label>
 					<Form.Control type="username" placeholder="Enter Username" />
 				</Form.Group>
 
