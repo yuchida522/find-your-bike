@@ -50,6 +50,11 @@ def create_listing():
 
 
 ############ ALGOLIA ###############
+@app.route('/api/add-listing', methods=["POST"])
+def add_listing():
+    """adds a bike to listing"""
+    pass
+
 
 
 # client = SearchClient.create(
