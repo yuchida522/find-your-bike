@@ -6,19 +6,21 @@ function CreateListing () {
 	const [image, setImage] = React.useState('');
 	const [title, setTitle] = React.useState('');
 	const [description, setDescription] = React.useState('');
-	const [conditionNew, setConditionNew] = React.useState(false);
-	const [conditionUsed, setConditionUsed] = React.useState(false);
+	const [condition, SetCondition] = React.useState('')
+	const [saleType, setSaleType] = React.useState('')
 	const [price, setPrice] = React.useState('');
 	const [bikeType, setBikeType] = React.useState('');
-
+	const [brand, setBrand] = React.useState('')
+	const [frameSize, setFrameSize] = React.useState(0)
+	const [frameType, setFrameType] = React.useState('')
+	const [model, setModel] = React.useState('')
+	const history = useHistory()
 
 	const myWidget = cloudinary.createUploadWidget({cloudName:'online-bike-exchange', upload_preset:'g3w96a71',}, 
-						(error, result) => {if (result.event == "success") {
+						(error, result) => {if (result.event == 'success') {
 							setImage(result.info.url)
 						}});
-	
-	const checkedBoxes = new Set()
-	
+
 	function handleTitleChange(evt) {
 		setTitle(evt.target.value)
 	};
@@ -26,15 +28,38 @@ function CreateListing () {
 	function handleDescriptionChange(evt) {
 		setDescription(evt.target.value)
 	};
+	
+	function handleCheckboxSaleType(evt) {
+		setSaleType(evt.target.value)
+	};
+	
+	function handleCheckboxCondition(evt) {
+		SetCondition(evt.target.value)
+	};
 
 	function handlePriceChange(evt) {
 		setPrice(evt.target.value)
-	}
-
+	};
+	
 	function handleBikeTypeChange(evt) {
 		setBikeType(evt.target.value)
-	}
-	
+	};
+
+	function handleModelChange(evt) {
+		setModel(evt.target.value)
+	};
+	function handleBrandChange(evt) {
+		setBrand(evt.target.value)
+	};
+	function handleFrameTypeChange(evt) {
+		setFrameType(evt.target.value)
+	};
+	function handleFrameSizeChange(evt) {
+		setFrameSize(evt.target.value)
+	};
+
+
+	 console.log(saleType)
 	return (
     <React.Fragment>
 			<h1>Create Listing</h1>
@@ -68,23 +93,23 @@ function CreateListing () {
 					<Form.Label column sm="2">
 						Condition
 					</Form.Label>
-						<Form.Check inline label="New" value="new"  id="new-condition" type="checkbox" />
-						<Form.Check inline label="Used" value="used" id="used-condition" type="checkbox" />
+						<Form.Check inline label="New" value="new"  id="new-condition" type="checkbox" onChange={handleCheckboxCondition}/>
+						<Form.Check inline label="Used" value="used" id="used-condition" type="checkbox" onChange={handleCheckboxCondition}/>
   			</Form.Group>
 				<Form.Group as={Row} controlId="listingType">
 					<Form.Label column sm="2">
 						Listing Type
 					</Form.Label>
-						<Form.Check inline label="For sale" value="sale" type="checkbox" />
-						<Form.Check inline label="For trade" value="trade" type="checkbox" />
-						<Form.Check inline label="For free" value="free" type="checkbox" />
+						<Form.Check inline label="For sale" value="sale" type="checkbox" onChange={handleCheckboxSaleType}/>
+						<Form.Check inline label="For trade" value="trade" type="checkbox" onChange={handleCheckboxSaleType}/>
+						<Form.Check inline label="For free" value="free" type="checkbox" onChange={handleCheckboxSaleType}/>
   			</Form.Group>
 				<Form.Group as={Row} controlId="listingPrice">
 					<Form.Label column sm="2">
 						Price
 					</Form.Label>
 					<Col sm="7">
-						<Form.Control type="text" placeholder="required" value={price} onChange={handlePriceChange}/>
+						<Form.Control type="text" value={price} onChange={handlePriceChange}/>
 					</Col>
   			</Form.Group>
 					<Row>
@@ -98,7 +123,7 @@ function CreateListing () {
 							Model
 						</Form.Label>
 						<Col sm="3">
-							<Form.Control type="text" placeholder="required" />
+							<Form.Control type="text" placeholder="required" value={model} onChange={handleModelChange}/>
 						</Col>		
   				</Row>
 					<Row>
@@ -106,13 +131,13 @@ function CreateListing () {
 							Brand
 						</Form.Label>
 						<Col sm="3">
-							<Form.Control type="text" placeholder="required" />
+							<Form.Control type="text"  placeholder="required" value={brand} onChange={handleBrandChange}/>
 						</Col>
 						<Form.Label column sm="2">
 							Frame type
 						</Form.Label>
 						<Col sm="3">
-							<Form.Control type="text" placeholder="required" />
+							<Form.Control type="text" placeholder="required" value={frameType} onChange={handleFrameTypeChange} />
 						</Col>		
   				</Row>
 					<Row>
@@ -120,7 +145,7 @@ function CreateListing () {
 						Frame size
 					</Form.Label>
 					<Col sm="3">
-						<Form.Control type="text" placeholder="required" />
+						<Form.Control type="text" value={frameSize} placeholder="required" onChange={handleFrameSizeChange}/>
 					</Col>		
   				</Row>	
 				<Form.Group as={Row} id="listingSubmitBtnGroup">
