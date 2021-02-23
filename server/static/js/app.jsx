@@ -1,4 +1,6 @@
 "use strict";
+
+// webpack -- compile jsx file into js file
 function App() {
 	return (
 		<Router>
@@ -6,7 +8,6 @@ function App() {
 			<Switch>
 				<Route exact path='/login'>
 					<Login />
-					{/* <Map /> */}
 				</Route>
 
                 <Route exact path='/about'>
