@@ -8,7 +8,6 @@ function App() {
 			<Switch>
 				<Route exact path='/login'>
 					<Login />
-					{/* <Map /> */}
 				</Route>
 
                 <Route exact path='/about'>
