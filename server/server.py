@@ -5,6 +5,7 @@ from jinja2 import StrictUndefined
 import os
 import secrets
 import cloudinary
+import crud
 
 # from algoliasearch.search_client import SearchClient
 """this will be there server file"""
@@ -37,12 +38,20 @@ def login():
 
     return render_template('base.html')
 
-# @app.route('user_login')
-# def user_login():
+@app.route('user_login', method=["POST"])
+def user_login():
 
-#     user_info = request.get_json()
+    data = request.get_json()
+    user = crud.get_user_by_email(data['email'])
+    email = data['email']
+    password = data['password']
 
-#     user = crud.get_user_by_email(user_info['email'])
+    validate_user = crud.validate_user(email, password)
+
+    if validate_user:
+        return jsonify({'fname': user['fname'], 'id': user['user_id']})
+    else: 
+        return jsonify('invalid info. Does not match')
 
 @app.route('/register')
 def register():

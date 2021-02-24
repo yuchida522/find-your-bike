@@ -40,7 +40,10 @@ function Login() {
 			<h1>Log In</h1>
 			<Form.Group controlId="formBasicEmail">
 				<Form.Label>Email address</Form.Label>
-				<Form.Control type="email" placeholder="Enter email" onChange={handleChange} />
+				<Form.Control type="email" 
+								placeholder="Enter email" 
+								value ={email}
+								onChange={handleEmailChange} />
 				<Form.Text className="text-muted">
 				We'll never share your email with anyone else.
 				</Form.Text>
@@ -48,7 +51,10 @@ function Login() {
 
 			<Form.Group controlId="formBasicPassword">
 				<Form.Label>Password</Form.Label>
-				<Form.Control type="password" placeholder="Password" onChange={handleChange}/>
+				<Form.Control type="password" 
+								placeholder="Password" 
+								value={password}
+								onChange={handlePasswordChange}/>
 			</Form.Group>
 
 			<Button variant="primary">Log In</Button>

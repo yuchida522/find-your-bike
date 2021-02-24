@@ -114,6 +114,10 @@ def get_user_by_email(email):
 
     return user_email
 
+def validate_user(email, password):
+
+    return User.query.filter(User.password == password, User.email==email).first()
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
