@@ -1,7 +1,40 @@
 'use strict';
 function Login() {
 
+	const [email, setEmail] = React.useState('')
+	const [password, setPassword] = React.useState('')
 	// function will go here
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		let payload = {'email': email, 'password': password} 
+		fetch('/user_login', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(payload)
+		});
+		.then(response => response.json())
+		.then(payload =>{
+			if(payload !== 'incorrect information'){
+				props.setUser(payload)
+				// I think local storage needs to go next, but haven't figured it out yet
+			}
+			else{
+				alert('Invalid information')
+			}
+		});
+	}
+
+	const handleEmailChange = () =>{
+		setEmail(e.target.value)
+
+	}
+
+	const handlePasswordChange = () => {
+		setPassword(e.target.value)
+	}
+
+
 	return (
 		<div>
 			<h1>Log In</h1>
@@ -26,28 +59,28 @@ function Login() {
 }
 // set states
 
-const loginForm = (props) => {
-	const [login, setLogin] = React.setLogin({
-		login: true,
-		email: "",
-		password: ""
-	});
-}
+// const loginForm = (props) => {
+// 	const [login, setLogin] = React.setLogin({
+// 		login: true,
+// 		email: "",
+// 		password: ""
+// 	});
+// }
 
-console.log(loginForm)
+// console.log(loginForm)
 
-// handle the updating of rthe state as a user fills out the registraton form 
-const handleChange = (e) => {
-// e is for event 
-	let change = {};	
-	change[e.target] = e.target.value
-	console.log(change)
-	this.setState(change)
-	// what is e.target?
-	// does the handle change need to have the prevent default?
+// // handle the updating of rthe state as a user fills out the registraton form 
+// const handleChange = (e) => {
+// // e is for event 
+// 	let change = {};	
+// 	change[e.target] = e.target.value
+// 	console.log(change)
+// 	this.setState(change)
+// 	// what is e.target?
+// 	// does the handle change need to have the prevent default?
 	
-	// in heathers, what is "..." before the prevState
-} 
+// 	// in heathers, what is "..." before the prevState
+// } 
 // have  a function that handles the changes
 // go to server py and do something (Don't know what yet)
 
@@ -56,17 +89,17 @@ const handleChange = (e) => {
 // step 3 -- make a method to handle login and then go to server.py and create a route
 		// that handles the login 
 
-const handleLogin = (e) => {
-	e.preventDefault();
-	if(state.email.length && state.password.length) {
-		const payload = {'email': state.email, 'password': state.password};
-		fetch('/user_login', {
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(payload)
-		})
-	}
-}
+// const handleLogin = (e) => {
+// 	e.preventDefault();
+// 	if(state.email.length && state.password.length) {
+// 		const payload = {'email': state.email, 'password': state.password};
+// 		fetch('/user_login', {
+// 			method: 'POST',
+// 			headers: {'Content-Type': 'application/json'},
+// 			body: JSON.stringify(payload)
+// 		})
+// 	}
+// }
 // step 4 -- crud functions that are called inside of the route above 
 	// handles getting user by email to check if its a valid email 
 	// OR handles register and saving a user to the DB if they are new
