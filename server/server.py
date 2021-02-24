@@ -37,6 +37,18 @@ def login():
 
     return render_template('base.html')
 
+# @app.route('user_login')
+# def user_login():
+
+#     user_info = request.get_json()
+
+#     user = crud.get_user_by_email(user_info['email'])
+
+@app.route('/register')
+def register():
+
+    return render_template('base.html')
+
 
 @app.route('/profile')
 def profile():
