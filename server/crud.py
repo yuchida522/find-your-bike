@@ -108,6 +108,11 @@ def create_photo(photo_url, photo_listing_id):
 
     return photos
 
+def get_user_by_email(email):
+
+    user_email = User.query.filter(User.email == email).first()
+
+    return user_email
 
 if __name__ == '__main__':
     from server import app
