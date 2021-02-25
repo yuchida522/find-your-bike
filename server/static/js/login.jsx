@@ -8,11 +8,12 @@ function Login() {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		let payload = {'email': email, 'password': password} 
-		fetch('/user_login', {
+		fetch('/api/user_login', {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(payload)
-		});
+		})
+
 		.then(response => response.json())
 		.then(payload =>{
 			if(payload !== 'incorrect information'){

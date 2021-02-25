@@ -1,6 +1,6 @@
 """ Server for Online Bike Exchange """
 from model import connect_to_db, db
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, jsonify
 from jinja2 import StrictUndefined
 import os
 import secrets
@@ -38,7 +38,7 @@ def login():
 
     return render_template('base.html')
 
-@app.route('user_login', method=["POST"])
+@app.route('/api/user_login', methods=["POST"])
 def user_login():
 
     data = request.get_json()
